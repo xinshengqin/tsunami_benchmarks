@@ -19,18 +19,27 @@ def maketopo_onshore():
     xx = arange(x.min(),x.min() + 0.01*(len(x)-1) + .001, 0.01)
     yy = arange(y.min(),y.min() + 0.01*(len(y)-1) + .001, 0.01)
     zz = z - 0.97   # shift so sea_level = 0
+
+    #write log file for debugging
+    log = open('./maketopo.log','w')
+    log.write('number of xpts:'+str(len(xx))+'\n')
+    log.write('number of ypts:'+str(len(yy))+'\n')
+    log.write(str(xx)+'\n')
+    log.write(str(yy))
     
     topo = topotools.Topography()
     topo.x = xx
     topo.y = yy
     topo.Z = zz
     
-    topo.write('seaside_onshore.tt2',topo_type=2)
+    topo.write('seaside_onshore.tt1',topo_type=1)
 
-    figure()
-    contourf(xx,yy,zz.T,linspace(-1,0.4,15))
-    axis('scaled')
-    colorbar()
+    #figure()
+    ##contourf(xx,yy,zz.T,linspace(-1,0.4,15))
+    #contourf(xx,yy,zz,linspace(-1,0.4,15))
+    #axis('scaled')
+    #colorbar()
+    #savefig('topography.png')
     
 
 def maketopo_pwlinear():

@@ -115,8 +115,9 @@ def setrun(claw_pkg='geoclaw'):
 
     if clawdata.output_style==1:
         # Output nout frames at equally spaced times up to tfinal:
-        clawdata.num_output_times = 5
-        clawdata.tfinal = 35.0
+        clawdata.num_output_times = 20
+        #clawdata.tfinal = 35.0
+        clawdata.tfinal = 45.0
         clawdata.output_t0 = False  # output at initial (or restart) time?
 
     elif clawdata.output_style == 2:
@@ -426,7 +427,8 @@ def setgeo(rundata):
     #topo_data.topofiles.append([2, 1, 1, 0., 1.e10, 'flat.topotype2'])
     #topo_data.topofiles.append([2, 1, 1, 0., 1.e10, 'seaside_model.topotype2'])
     topo_data.topofiles.append([1, 1, 1, 0., 1.e10, 'pwlinear2.topotype1'])
-    topo_data.topofiles.append([2, 1, 1, 0., 1.e10, 'seaside_onshore.tt2'])
+    #topo_data.topofiles.append([2, 1, 1, 0., 1.e10, 'seaside_onshore.tt2'])
+    topo_data.topofiles.append([1, 1, 1, 0., 1.e10, 'seaside_onshore.tt1'])
 
     # == setdtopo.data values ==
     dtopo_data = rundata.dtopo_data

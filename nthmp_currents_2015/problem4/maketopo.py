@@ -9,16 +9,20 @@ from pylab import *
 def maketopo_onshore():
 
     try:
-        x = loadtxt('x_onshore.txt')
-        y = loadtxt('y_onshore.txt')
-        z = loadtxt('z_onshore.txt')
+        #x = loadtxt('x_onshore.txt')
+        #y = loadtxt('y_onshore.txt')
+        #z = loadtxt('z_onshore.txt')
+        x = loadtxt('seaside.xyz.x')
+        y = loadtxt('seaside.xyz.y')
+        z = loadtxt('seaside.xyz.z')
     except:
         raise Exception("Did you create onshore topo files?  See README.md")
     
     # modify x and y so that cell size is truly uniform:
     xx = arange(x.min(),x.min() + 0.01*(len(x)-1) + .001, 0.01)
     yy = arange(y.min(),y.min() + 0.01*(len(y)-1) + .001, 0.01)
-    zz = z - 0.97   # shift so sea_level = 0
+    #zz = z - 0.97   # shift so sea_level = 0
+    zz = z #seaside.xyz.z is based on sea_level = 0
 
     #write log file for debugging
     log = open('./maketopo.log','w')
@@ -32,14 +36,15 @@ def maketopo_onshore():
     topo.y = yy
     topo.Z = zz
     
-    topo.write('seaside_onshore.tt1',topo_type=1)
+    #topo.write('seaside_onshore.tt1',topo_type=1)
+    topo.write('seaside_from_xyz.tt1',topo_type=1)
 
-    #figure()
-    ##contourf(xx,yy,zz.T,linspace(-1,0.4,15))
-    #contourf(xx,yy,zz,linspace(-1,0.4,15))
-    #axis('scaled')
-    #colorbar()
-    #savefig('topography.png')
+    figure()
+    #contourf(xx,yy,zz.T,linspace(-1,0.4,15))
+    contourf(xx,yy,zz,linspace(-1,0.4,15))
+    axis('scaled')
+    colorbar()
+    savefig('topography.png')
     
 
 def maketopo_pwlinear():

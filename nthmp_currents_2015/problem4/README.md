@@ -30,3 +30,5 @@ for some of the scripts in this directory to work.
     $ make .plots
 
 
+Some other notes:
+seaside.xyz is topography file representing structures onshore, made by STLToXYZ.py in $FOAM_SCRIP/
